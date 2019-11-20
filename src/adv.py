@@ -58,11 +58,21 @@ directions = {
 }
 
 while True:
+    print('----------------------------');
     print(f'Room: {player.currentRoom.name}');
     print(f'Description: {player.currentRoom.description}\n');
     response = input("Move north, south, east, or west (type n, s, e, or w). Or q to quit: ")
 
     if response in directions.keys():
-        print(response);
+        checkDirection = getattr(player.currentRoom, directions[response])
+
+        if checkDirection != None:
+          # change current room
+            player.currentRoom = getattr(player.currentRoom, directions[response])
+        else:
+            input('Cant move in this direction. Press enter to try again ');
     elif response == 'q':
+        print('Goodbye');
         break
+    else:
+      input('Error, please enter valid command. Press enter to try again ');
