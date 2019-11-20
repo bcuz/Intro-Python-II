@@ -50,3 +50,19 @@ player = Player('Adam', room['outside'])
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+directions = {
+  'n': 'n_to',
+  's': 's_to', 
+  'e': 'e_to',
+  'w': 'w_to',
+}
+
+while True:
+    print(f'Room: {player.currentRoom.name}');
+    print(f'Description: {player.currentRoom.description}\n');
+    response = input("Move north, south, east, or west (type n, s, e, or w). Or q to quit: ")
+
+    if response in directions.keys():
+        print(response);
+    elif response == 'q':
+        break
