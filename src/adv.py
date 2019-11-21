@@ -65,17 +65,17 @@ while True:
 	for i, v in enumerate(player.currentRoom.items):
 		print(f'{i+1}. {v}');
 	# print(player.currentRoom.items);
-	response = input("\nMove north, south, east, or west (type n, s, e, or w). Or q to quit: ")
-
-	if response in directions.keys():
-		checkDirection = getattr(player.currentRoom, directions[response])
+	response = input("\nMove north, south, east, or west (type n, s, e, or w). Or q to quit: ").lower().split()
+	
+	if response[0] in directions.keys():
+		checkDirection = getattr(player.currentRoom, directions[response[0]])
 
 		if checkDirection != None:
 		  # change current room
-			player.currentRoom = getattr(player.currentRoom, directions[response])
+			player.currentRoom = getattr(player.currentRoom, directions[response[0]])
 		else:
 			input('Cant move in this direction. Press enter to try again ');
-	elif response == 'q':
+	elif response[0] == 'q':
 		print('Goodbye');
 		break
 	else:
