@@ -79,7 +79,10 @@ while True:
 	# print(player.currentRoom.items)
 	response = input("\nWhat do you want to do? ").lower().split()
 	# print(response)
-	if len(response) == 1:
+	if response[0] == 'q':
+		print('Goodbye')
+		break
+	elif len(response) == 1:
 		if response[0] in eligibleMoves.keys():
 			checkMove = getattr(player.currentRoom, eligibleMoves[response[0]])
 
@@ -93,8 +96,5 @@ while True:
 			removeObj(response[1])
 		else:
 			input('Error, please enter a valid command. Press [ENTER] to try again ')
-	elif response[0] == 'q':
-		print('Goodbye')
-		break
 	else:
 		input('Error, please enter a valid command. Press [ENTER] to try again ')
