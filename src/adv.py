@@ -80,7 +80,7 @@ def invalidCommand():
 	input('Error, please enter a valid command. Press [ENTER] to try again ')
 
 # print([item.name for item in player.currentRoom.items])
-# input('Introduction: Move north, south, east, or west with: n, s, e, or w. Take or drop an item by typing: take item. Press q to quit. Press [ENTER] to start game ')
+# input('Introduction: Move north, south, east, or west with: n, s, e, or w. Take or drop an item by typing: t item or d item. Press q to quit. Press [ENTER] to start game ')
 while True:
 	print('----------------------------')
 	print(f'Room: {player.currentRoom.name}')
