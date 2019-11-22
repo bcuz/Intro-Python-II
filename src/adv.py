@@ -9,18 +9,18 @@ room = {
 					 "North of you, the cave mount beckons", [Item('backpack', 'put in stuff'), Item('pencil', 'stab someone')]),
 
 	'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east.""", ['knife']),
+passages run north and east.""", [Item('knife', 'stab someone again')]),
 
 	'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm.""", ['gun']),
+the distance, but there is no way across the chasm.""", [Item('gun', 'make holes in stuff')]),
 
 	'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
-to north. The smell of gold permeates the air.""", ['potion']),
+to north. The smell of gold permeates the air.""", [Item('potion', 'heal yo\'self')]),
 
 	'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south.""", ['empty bag']),
+earlier adventurers. The only exit is to the south.""", [Item('empty bag', 'nothing 4 u')]),
 }
 
 
