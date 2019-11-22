@@ -50,12 +50,16 @@ player = Player('Adam', room['outside'])
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-directions = {
+eligibleMoves = {
 	'n': 'n_to',
 	's': 's_to', 
 	'e': 'e_to',
 	'w': 'w_to',
+	'take': True,
+	'drop': True
 }
+
+print(player.currentRoom.items)
 
 input('Introduction: Move north, south, east, or west with: n, s, e, or w. Take or drop an item by typing: take item. Press q to quit. Press [ENTER] to start game ')
 while True:
@@ -67,15 +71,19 @@ while True:
 		print(f'{i+1}. {v}')
 	# print(player.currentRoom.items)
 	response = input("\nWhat do you want to do? ").lower().split()
-	print(response)
-	if response[0] in directions.keys() and len(response) < 3:
-		checkDirection = getattr(player.currentRoom, directions[response[0]])
+	# print(response)
+	if len(response) == 1:
+		if response[0] in eligibleMoves.keys():
+			checkMove = getattr(player.currentRoom, eligibleMoves[response[0]])
 
-		if checkDirection != None:
-			# change current room
-			player.currentRoom = getattr(player.currentRoom, directions[response[0]])
-		else:
-			input('Cant move in this direction. Press [ENTER] to try again ')
+			if checkMove != None:
+				# change current room
+				player.currentRoom = getattr(player.currentRoom, eligibleMoves[response[0]])
+			else:
+				input('Cant move in this direction. Press [ENTER] to try again ')
+	elif len(response) == 2:
+		if response[0] in eligibleMoves.keys() and response[1] in player.currentRoom.items:
+			print('hi')
 	elif response[0] == 'q':
 		print('Goodbye')
 		break
