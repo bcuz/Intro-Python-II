@@ -80,7 +80,7 @@ def invalidCommand():
 	input('Error, please enter a valid command. Press [ENTER] to try again ')
 
 # print([item.name for item in player.currentRoom.items])
-# input('Introduction: Move north, south, east, or west with: n, s, e, or w. Take or drop an item by typing: t item or d item. Press q to quit. Press [ENTER] to start game ')
+# input('Introduction: Move north, south, east, or west with: n, s, e, or w. Take or drop an item by typing: t item or d item. q to quit and inv for current inventory. Press [ENTER] to start game ')
 while True:
 	print('----------------------------')
 	print(f'Room: {player.currentRoom.name}')
@@ -94,6 +94,14 @@ while True:
 	if response[0] == 'q':
 		print('Goodbye')
 		break
+	if response[0] == 'inv':
+		print('hi')
+		# if any items
+		for i, v in enumerate(player.items):
+			print(f'{i+1}. {v.name}')
+		# Press [ENTER] to continue "
+			# input('Cant move in this direction. Press [ENTER] to try again ')
+
 	elif len(response) == 1:
 		if response[0] in eligibleMoves.keys():
 			checkMove = getattr(player.currentRoom, eligibleMoves[response[0]])
