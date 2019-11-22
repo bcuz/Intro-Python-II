@@ -60,8 +60,14 @@ eligibleMoves = {
 	'drop': True
 }
 
-# print([item.name for item in player.currentRoom.items])
+def removeObj(itemToRemove):
+	for idx, obj in enumerate(player.currentRoom.items):
+		# print(obj)
+		if obj.name == itemToRemove:
+			del player.currentRoom.items[i]
+			break
 
+# print([item.name for item in player.currentRoom.items])
 # input('Introduction: Move north, south, east, or west with: n, s, e, or w. Take or drop an item by typing: take item. Press q to quit. Press [ENTER] to start game ')
 while True:
 	print('----------------------------')
@@ -84,7 +90,7 @@ while True:
 				input('Cant move in this direction. Press [ENTER] to try again ')
 	elif len(response) == 2:
 		if response[0] in eligibleMoves.keys() and response[1] in [item.name for item in player.currentRoom.items]:
-			print('hi')
+			removeObj(response[1])
 		else:
 			input('Error, please enter a valid command. Press [ENTER] to try again ')
 	elif response[0] == 'q':
