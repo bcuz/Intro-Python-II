@@ -60,11 +60,20 @@ eligibleMoves = {
 	'drop': True
 }
 
-def removeObj(itemToRemove):
+def getItem(item):
 	for idx, obj in enumerate(player.currentRoom.items):
-		if obj.name == itemToRemove:
+		if obj.name == item:
+			player.items.append(obj)
 			obj.on_take()
-			del player.currentRoom.items[i]
+			del player.currentRoom.items[idx]
+			break
+
+def dropItem(item):
+	for idx, obj in enumerate(player.items):
+		if obj.name == item:
+			player.currentRoom.items.append(obj)
+			obj.on_drop()
+			del player.items[idx]
 			break
 
 # print([item.name for item in player.currentRoom.items])
@@ -92,8 +101,14 @@ while True:
 			else:
 				input('Cant move in this direction. Press [ENTER] to try again ')
 	elif len(response) == 2:
-		if response[0] in eligibleMoves.keys() and response[1] in [item.name for item in player.currentRoom.items]:
-			removeObj(response[1])
+		if response[0] in eligibleMoves.keys():
+
+			if response[0] == 'take' and response[1] in [item.name for item in player.currentRoom.items]:
+				getItem(response[1])
+			elif response[0] == 'drop' and response[1] in [item.name for item in player.items]:
+				dropItem(response[1])
+			else:
+				input('Item not found there. Press [ENTER] to try again ')				
 		else:
 			input('Error, please enter a valid command. Press [ENTER] to try again ')
 	else:
