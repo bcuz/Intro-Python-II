@@ -79,8 +79,7 @@ def dropItem(item):
 def invalidCommand():
 	input('Error, please enter a valid command. Press [ENTER] to try again ')
 
-# print([item.name for item in player.currentRoom.items])
-# input('Introduction: Move north, south, east, or west with: n, s, e, or w. Take or drop an item by typing: t item or d item. q to quit and inv for current inventory. Press [ENTER] to start game ')
+input('Introduction: Move north, south, east, or west with: n, s, e, or w. Take or drop an item by typing: t item or d item. q to quit and inv for current inventory. Press [ENTER] to start game ')
 while True:
 	print('----------------------------')
 	print(f'Room: {player.currentRoom.name}')
@@ -90,16 +89,13 @@ while True:
 		print("Items in the room: ")
 		for i, v in enumerate(player.currentRoom.items):
 			print(f'{i+1}. {v.name}')
-		# print(player.currentRoom.items)
 	else:
 		print('No items in room')
 	response = input("\nWhat do you want to do? ").lower().split()
-	# print(response)
 	if response[0] == 'q':
 		print('Goodbye')
 		break
 	if response[0] == 'inv':
-		# if any items
 		if len(player.items) != 0:
 			print("\nItems in your inventory: ")			
 			for i, v in enumerate(player.items):

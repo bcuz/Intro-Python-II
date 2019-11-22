@@ -3,7 +3,6 @@ class Item:
 		self.name = name
 		self.description = description
 
-
 	def on_take(self):
 		input(f"\nYou have picked up {self.name}. Press [ENTER] to continue ")
 	
