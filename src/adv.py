@@ -1,11 +1,12 @@
 from room import Room
 from player import Player
+from item import Item
 
 # Declare all the rooms
 
 room = {
 	'outside':  Room("Outside Cave Entrance", 
-					 "North of you, the cave mount beckons", ['backpack', 'pencil']),
+					 "North of you, the cave mount beckons", [Item('backpack', 'put in stuff'), Item('pencil', 'stab someone')]),
 
 	'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east.""", ['knife']),
@@ -59,7 +60,7 @@ eligibleMoves = {
 	'drop': True
 }
 
-print(player.currentRoom.items)
+# print([item.name for item in player.currentRoom.items])
 
 input('Introduction: Move north, south, east, or west with: n, s, e, or w. Take or drop an item by typing: take item. Press q to quit. Press [ENTER] to start game ')
 while True:
@@ -68,7 +69,7 @@ while True:
 	print(f'Description: {player.currentRoom.description}\n')
 	print("Items in the room: ")
 	for i, v in enumerate(player.currentRoom.items):
-		print(f'{i+1}. {v}')
+		print(f'{i+1}. {v.name}')
 	# print(player.currentRoom.items)
 	response = input("\nWhat do you want to do? ").lower().split()
 	# print(response)
@@ -82,8 +83,10 @@ while True:
 			else:
 				input('Cant move in this direction. Press [ENTER] to try again ')
 	elif len(response) == 2:
-		if response[0] in eligibleMoves.keys() and response[1] in player.currentRoom.items:
+		if response[0] in eligibleMoves.keys() and response[1] in [item.name for item in player.currentRoom.items]:
 			print('hi')
+		else:
+			input('Error, please enter a valid command. Press [ENTER] to try again ')
 	elif response[0] == 'q':
 		print('Goodbye')
 		break
