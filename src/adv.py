@@ -62,8 +62,8 @@ eligibleMoves = {
 
 def removeObj(itemToRemove):
 	for idx, obj in enumerate(player.currentRoom.items):
-		# print(obj)
 		if obj.name == itemToRemove:
+			obj.on_take()
 			del player.currentRoom.items[i]
 			break
 
