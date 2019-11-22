@@ -51,12 +51,13 @@ player = Player('Adam', room['outside'])
 #
 # If the user enters "q", quit the game.
 directions = {
-  'n': 'n_to',
-  's': 's_to', 
-  'e': 'e_to',
-  'w': 'w_to',
+	'n': 'n_to',
+	's': 's_to', 
+	'e': 'e_to',
+	'w': 'w_to',
 }
 
+input('Introduction: Move north, south, east, or west with: n, s, e, or w. Take or drop an item by typing: take item. Press q to quit. Press [ENTER] to start game ')
 while True:
 	print('----------------------------')
 	print(f'Room: {player.currentRoom.name}')
@@ -65,18 +66,18 @@ while True:
 	for i, v in enumerate(player.currentRoom.items):
 		print(f'{i+1}. {v}')
 	# print(player.currentRoom.items)
-	response = input("\nMove north, south, east, or west (type n, s, e, or w). Or q to quit: ").lower().split()
+	response = input("\nWhat do you want to do? ").lower().split()
 	print(response)
-	if response[0] in directions.keys():
+	if response[0] in directions.keys() and len(response) < 3:
 		checkDirection = getattr(player.currentRoom, directions[response[0]])
 
 		if checkDirection != None:
-		  # change current room
+			# change current room
 			player.currentRoom = getattr(player.currentRoom, directions[response[0]])
 		else:
-			input('Cant move in this direction. Press enter to try again ')
+			input('Cant move in this direction. Press [ENTER] to try again ')
 	elif response[0] == 'q':
 		print('Goodbye')
 		break
 	else:
-	  input('Error, please enter a valid command. Press enter to try again ')
+		input('Error, please enter a valid command. Press [ENTER] to try again ')
