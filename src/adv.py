@@ -20,7 +20,7 @@ to north. The smell of gold permeates the air.""", [Item('potion', 'heal yo\'sel
 
 	'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south.""", [Item('empty bag', 'nothing 4 u')]),
+earlier adventurers. The only exit is to the south.""", [Item('dust', 'nothing 4 u')]),
 }
 
 
