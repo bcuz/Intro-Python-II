@@ -76,6 +76,9 @@ def dropItem(item):
 			del player.items[idx]
 			break
 
+def invalidCommand():
+	input('Error, please enter a valid command. Press [ENTER] to try again ')
+
 # print([item.name for item in player.currentRoom.items])
 # input('Introduction: Move north, south, east, or west with: n, s, e, or w. Take or drop an item by typing: take item. Press q to quit. Press [ENTER] to start game ')
 while True:
@@ -100,6 +103,8 @@ while True:
 				player.currentRoom = getattr(player.currentRoom, eligibleMoves[response[0]])
 			else:
 				input('Cant move in this direction. Press [ENTER] to try again ')
+		else:
+			invalidCommand()
 	elif len(response) == 2:
 		if response[0] in eligibleMoves.keys():
 
@@ -110,6 +115,6 @@ while True:
 			else:
 				input('Item not found there. Press [ENTER] to try again ')				
 		else:
-			input('Error, please enter a valid command. Press [ENTER] to try again ')
+			invalidCommand()
 	else:
-		input('Error, please enter a valid command. Press [ENTER] to try again ')
+		invalidCommand()
