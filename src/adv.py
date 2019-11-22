@@ -56,8 +56,8 @@ eligibleMoves = {
 	's': 's_to', 
 	'e': 'e_to',
 	'w': 'w_to',
-	'take': True,
-	'drop': True
+	't': True,
+	'd': True
 }
 
 def getItem(item):
@@ -118,9 +118,9 @@ while True:
 	elif len(response) == 2:
 		if response[0] in eligibleMoves.keys():
 
-			if response[0] == 'take' and response[1] in [item.name for item in player.currentRoom.items]:
+			if response[0] == 't' and response[1] in [item.name for item in player.currentRoom.items]:
 				getItem(response[1])
-			elif response[0] == 'drop' and response[1] in [item.name for item in player.items]:
+			elif response[0] == 'd' and response[1] in [item.name for item in player.items]:
 				dropItem(response[1])
 			else:
 				input('Item not found there. Press [ENTER] to try again ')				
